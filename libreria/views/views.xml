@@ -1,0 +1,105 @@
+<odoo>
+  <data>
+
+  <!-- lib.cliente form view -->
+  <record id="lib_cliente_view_form" model="ir.ui.view">
+    <field name="name">lib_cliente_view_form</field>
+    <field name="model">lib.cliente</field>
+    <field name="arch" type="xml">
+      <form string="">
+        <sheet>
+          <group>
+            <field name="name"/>
+            <field name="telefono"/>
+            <field name="direccion"/>
+          </group>
+        </sheet>
+      </form>
+    </field>
+  </record>
+
+  <!-- lilb.cliente tree view -->
+  <record id="lib_cliente_view_tree" model="ir.ui.view">
+    <field name="name">lib_cliente_view_tree</field>
+    <field name="model">lib.cliente</field>
+    <field name="arch" type="xml">
+      <tree>
+        <field name="name"/>
+        <field name="telefono"/>
+        <field name="direccion"/>
+      </tree>
+    </field>
+  </record>
+
+  <!-- model.name action window -->
+  <record id="lib_cliente_action" model="ir.actions.act_window">
+    <field name="name">Cliente</field>
+    <field name="type">ir.actions.act_window</field>
+    <field name="res_model">lib.cliente</field>
+    <field name="view_mode">tree,form</field>
+  </record>
+
+  <!-- This Menu Item will appear in the Upper bar, that's why It needs NO parent or action -->
+  <menuitem id="cli_li_menu_root" name="Libreria" sequence="20"/>
+
+  <!-- This Menu Item must have a parent and an action -->
+  <menuitem id="cli_menu_act" name="Cliente" parent="cli_li_menu_root" action="lib_cliente_action" sequence="21"/>
+
+    <!-- explicit list view definition -->
+<!--
+    <record model="ir.ui.view" id="libreria.list">
+      <field name="name">libreria list</field>
+      <field name="model">libreria.libreria</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="value"/>
+          <field name="value2"/>
+        </tree>
+      </field>
+    </record>
+-->
+
+    <!-- actions opening views on models -->
+<!--
+    <record model="ir.actions.act_window" id="libreria.action_window">
+      <field name="name">libreria window</field>
+      <field name="res_model">libreria.libreria</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+-->
+
+    <!-- server action to the one above -->
+<!--
+    <record model="ir.actions.server" id="libreria.action_server">
+      <field name="name">libreria server</field>
+      <field name="model_id" ref="model_libreria_libreria"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": model._name,
+        }
+      </field>
+    </record>
+-->
+
+    <!-- Top menu item -->
+<!--
+    <menuitem name="libreria" id="libreria.menu_root"/>
+-->
+    <!-- menu categories -->
+<!--
+    <menuitem name="Menu 1" id="libreria.menu_1" parent="libreria.menu_root"/>
+    <menuitem name="Menu 2" id="libreria.menu_2" parent="libreria.menu_root"/>
+-->
+    <!-- actions -->
+<!--
+    <menuitem name="List" id="libreria.menu_1_list" parent="libreria.menu_1"
+              action="libreria.action_window"/>
+    <menuitem name="Server to list" id="libreria" parent="libreria.menu_2"
+              action="libreria.action_server"/>
+-->
+  </data>
+</odoo>

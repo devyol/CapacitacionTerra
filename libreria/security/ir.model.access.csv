@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_lib_cliente,lib.cliente,model_lib_cliente,,1,1,1,1
+access_lib_factura,lib.factura,model_lib_factura,,1,1,1,1
+access_lib_factura_detalle,lib.factura.detalle,model_lib_factura_detalle,,1,1,1,1

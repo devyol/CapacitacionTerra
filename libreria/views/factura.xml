@@ -1,0 +1,68 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data noupdate="1">
+        
+    <!-- lib.factura form view -->
+    <record id="libfactura_view_form" model="ir.ui.view">
+        <field name="name">libfactura_view_form</field>
+        <field name="model">lib.factura</field>
+        <field name="arch" type="xml">
+            <form string="">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="cliente_id"/>
+                        
+                    </group>
+                    <notebook>
+                        <page string="Detalle" name="detalle">
+                            <field name="factura_lines">
+                                <tree>
+                                    <field name="cantidad"/>
+                                    <field name="precio"/>
+                                    <field name="total"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+
+
+    <!-- lib.factura.detalle form view -->
+    <record id="lib_fac_detalle_view_form" model="ir.ui.view">
+        <field name="name">lib_fac_detalle_view_form</field>
+        <field name="model">lib.factura.detalle</field>
+        <field name="arch" type="xml">
+            <form string="">
+                <sheet>
+                    <group>
+                        <field name="cantidad"/>
+                        
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- lib.factura.detalle tree view -->
+    <record id="model_name_view_tree" model="ir.ui.view">
+        <field name="name">lib.factura.detalle.view.tree</field>
+        <field name="model">lib.factura.detalle</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="cantidad"/>
+                <field name="precio"/>
+                <field name="total"/>
+                
+            </tree>
+        </field>
+    </record>
+
+
+        
+    </data>
+</odoo>
