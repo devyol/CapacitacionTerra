@@ -1,0 +1,20 @@
+<odoo>
+  <data>
+
+  <!-- factura inherit form view -->
+  <record id="factura_inherit_view_form" model="ir.ui.view">
+    <field name="name">factura_inherit_view_form</field>
+    <field name="model">lib.factura</field>
+    <field name="inherit_id" ref="libreria.libfactura_view_form"/>
+    <field name="arch" type="xml">
+      
+      <xpath expr="//field[@name='cliente_id']" position="after">
+        <field name="tipo_venta"/>
+        
+      </xpath>
+      
+    </field>
+  </record>
+
+  </data>
+</odoo>

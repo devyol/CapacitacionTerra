@@ -8,21 +8,25 @@
         <field name="model">lib.factura</field>
         <field name="arch" type="xml">
             <form string="">
+            <header>
+            <button string="Calcular" name="calcularTotal" type="object" icon="fa-anchor" class="oe_highlight" />
+            <field name="state" widget="statusbar" clickable="True"/>
+            </header>
                 <sheet>
+                    <div class="oe_title">
+                        <label for="name" class="oe_edit_only" />
+                        <h1>
+                            <field name="name" class="oe_inline" placeholder="" readonly="1"/>
+                        </h1>
+                    </div>
                     <group>
-                        <field name="name"/>
-                        <field name="cliente_id"/>
-                        
+                        <field name="total"/>
+                        <field name="cliente_id" required="1"/>
+                        <field name="direccion_cliente"/>
                     </group>
                     <notebook>
                         <page string="Detalle" name="detalle">
-                            <field name="factura_lines">
-                                <tree>
-                                    <field name="cantidad"/>
-                                    <field name="precio"/>
-                                    <field name="total"/>
-                                </tree>
-                            </field>
+                            <field name="factura_lines"/>
                         </page>
                     </notebook>
                 </sheet>
@@ -30,6 +34,36 @@
         </field>
     </record>
 
+    <!-- lib.factura tree view -->
+    <record id="lib_factura_view_tree" model="ir.ui.view">
+        <field name="name">lib_factura_view_tree</field>
+        <field name="model">lib.factura</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="cliente_id"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- model.name action window -->
+    <record id="lib_fac_action" model="ir.actions.act_window">
+        <field name="name">Factura</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">lib.factura</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- This Menu Item Must have a parent -->
+    <menuitem id="cf_menu_categ" name="Factura" parent="libreria.cli_li_menu_root" sequence="20"/>
+
+    <!-- This Menu Item must have a parent and an action -->
+    <menuitem id="sub_menu_act" name="Facturas" parent="libreria.cli_li_menu_root"  sequence="21"/>
+
+    <!-- This Menu Item must have a parent and an action -->
+    <menuitem id="lfac_menu_act" name="Factura" parent="sub_menu_act" action="lib_fac_action" sequence="22"/>
+
+    
 
 
     <!-- lib.factura.detalle form view -->
@@ -39,9 +73,10 @@
         <field name="arch" type="xml">
             <form string="">
                 <sheet>
-                    <group>
-                        <field name="cantidad"/>
-                        
+                    <group col="4">
+                        <field name="cantidad" required="1"/>
+                        <field name="precio" required="1" group_operator="sum"/>
+                        <field name="total" group_operator="sum"/>                    
                     </group>
                 </sheet>
             </form>
@@ -57,12 +92,20 @@
                 <field name="cantidad"/>
                 <field name="precio"/>
                 <field name="total"/>
-                
             </tree>
         </field>
     </record>
 
+    <!-- model.name action window -->
+    <record id="lib_fac_det_action" model="ir.actions.act_window">
+        <field name="name">Detalle</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">lib.factura.detalle</field>
+        <field name="view_mode">tree,form</field>
+    </record>
 
-        
+    <!-- This Menu Item must have a parent and an action -->
+    <menuitem id="det_menu_act" name="Factura Lineas" parent="sub_menu_act" action="lib_fac_det_action" sequence="23"/>
+
     </data>
 </odoo>

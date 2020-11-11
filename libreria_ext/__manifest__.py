@@ -1,9 +1,10 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "libreria Terra",
+    'name': "libreria_ext",
 
     'summary': """
-        Modulo Librerai""",
+        Short (1 phrase/line) summary of the module's purpose, used as
+        subtitle on modules listing or apps.openerp.com""",
 
     'description': """
         Long description of module's purpose
@@ -19,20 +20,16 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base'],
+    'depends': ['base','libreria'],
 
     # always loaded
     'data': [
-        'security/ir.model.access.csv',
-        'data/file_sequence.xml',
+        # 'security/ir.model.access.csv',
         'views/views.xml',
-        'views/factura.xml',
+        'views/templates.xml',
     ],
     # only loaded in demonstration mode
     'demo': [
         'demo/demo.xml',
     ],
-    'installable':True,
-    'auto_install': True,
-    'application':True,
 }
