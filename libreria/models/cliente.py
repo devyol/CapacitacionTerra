@@ -11,7 +11,8 @@ class Cliente(models.Model):
     fecha_nacimiento = fields.Date(string='Fecha Nacimiento')
     genero = fields.Selection(string='Genero', selection=[('hombre', 'Hombre'), ('mujer', 'Mujer'),])
     edad = fields.Integer(string='Edad', compute='_calcular_edad')
-    
+    mayor_edad = fields.Boolean(string='Mayor de Edad')
+        
 
     @api.depends('fecha_nacimiento')
     def _calcular_edad(self):

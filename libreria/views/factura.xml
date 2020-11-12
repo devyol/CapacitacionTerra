@@ -12,24 +12,26 @@
             <button string="Calcular" name="calcularTotal" type="object" icon="fa-anchor" class="oe_highlight" />
             <field name="state" widget="statusbar" clickable="True"/>
             </header>
-                <sheet>
-                    <div class="oe_title">
-                        <label for="name" class="oe_edit_only" />
-                        <h1>
-                            <field name="name" class="oe_inline" placeholder="" readonly="1"/>
-                        </h1>
-                    </div>
-                    <group>
-                        <field name="total"/>
-                        <field name="cliente_id" required="1"/>
-                        <field name="direccion_cliente"/>
-                    </group>
-                    <notebook>
-                        <page string="Detalle" name="detalle">
-                            <field name="factura_lines"/>
-                        </page>
-                    </notebook>
-                </sheet>
+            <sheet>
+                <div class="oe_title">
+                    <label for="name" class="oe_edit_only" />
+                    <h1>
+                        <field name="name" class="oe_inline" placeholder="" readonly="1"/>
+                    </h1>
+                </div>
+                <group col="4" name="groupone">
+                    <field name="total"/>
+                    <field name="cliente_id" required="1"/>
+                    <field name="direccion_cliente"/>
+                    <field name="test"/>
+                    <field name="test2"/>
+                </group>
+                <notebook>
+                    <page string="Detalle" name="detalle">
+                        <field name="factura_lines"/>
+                    </page>
+                </notebook>
+            </sheet>
             </form>
         </field>
     </record>

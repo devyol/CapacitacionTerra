@@ -14,8 +14,8 @@ class Factura(models.Model):
     test = fields.Boolean(string='Test',default='False')
     state = fields.Selection(string='Estado', selection=[('iniciado', 'Iniciado'), ('finalizado', 'Finalizado'),], default="iniciado")
     direccion_cliente = fields.Char(string='Direccion', related="cliente_id.direccion")
-    
-    
+
+    test2 = fields.Char(string='Test')
     
     
     
@@ -27,9 +27,7 @@ class Factura(models.Model):
 
 
     def calcularTotal(self):
-
         for record in self:
-
             totalT = 0
             for li in record.factura_lines:
                 totalT += li.total

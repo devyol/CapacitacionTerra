@@ -15,6 +15,7 @@
             <field name="fecha_nacimiento" widget="date"/>
             <field name="genero" widget='radio' options="{'horizontal': true}"/>
             <field name="edad" readonly="1"/>
+            <field name="mayor_edad"/>
           </group>
         </sheet>
       </form>
@@ -30,6 +31,8 @@
         <field name="name"/>
         <field name="telefono"/>
         <field name="direccion"/>
+        <field name="edad"/>
+        <field name="mayor_edad"/>
       </tree>
     </field>
   </record>
